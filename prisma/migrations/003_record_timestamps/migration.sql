@@ -1,0 +1,10 @@
+ALTER TABLE "Student" ADD COLUMN IF NOT EXISTS "createdAt" TEXT;
+CREATE INDEX "Student_created_at" ON "Student" ("createdAt", "id");
+ALTER TABLE "Pass" ADD COLUMN IF NOT EXISTS "createdAt" TEXT;
+CREATE INDEX "Pass_created_at" ON "Pass" ("createdAt", "id");
+ALTER TABLE "Lesson" ADD COLUMN IF NOT EXISTS "createdAt" TEXT;
+CREATE INDEX "Lesson_created_at" ON "Lesson" ("createdAt", "id");
+ALTER TABLE "Consultation" ADD COLUMN IF NOT EXISTS "createdAt" TEXT;
+CREATE INDEX "Consultation_created_at" ON "Consultation" ("createdAt", "id");
+ALTER TABLE "Notice" ADD COLUMN IF NOT EXISTS "createdAt" TEXT;
+CREATE INDEX "Notice_created_at" ON "Notice" ("createdAt", "id");
