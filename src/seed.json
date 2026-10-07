@@ -1,0 +1,97 @@
+{
+  "Student": [
+    {
+      "id": "student-1",
+      "name": "김하늘",
+      "phone": "010-0000-1001",
+      "guardianName": "김보호",
+      "guardianPhone": "010-0000-2001"
+    },
+    {
+      "id": "student-2",
+      "name": "이서준",
+      "phone": "010-0000-1002",
+      "guardianName": "이보호",
+      "guardianPhone": "010-0000-2002"
+    },
+    {
+      "id": "student-3",
+      "name": "박지우",
+      "phone": "010-0000-1003",
+      "guardianName": "박보호",
+      "guardianPhone": "010-0000-2003"
+    },
+    {
+      "id": "student-4",
+      "name": "최다은",
+      "phone": "010-0000-1004",
+      "guardianName": "최보호",
+      "guardianPhone": "010-0000-2004"
+    }
+  ],
+  "Pass": [
+    {
+      "id": "pass-1",
+      "studentId": "student-1",
+      "title": "피아노 8회",
+      "totalSessions": 8
+    },
+    {
+      "id": "pass-2",
+      "studentId": "student-2",
+      "title": "바이올린 4회",
+      "totalSessions": 4
+    },
+    {
+      "id": "pass-3",
+      "studentId": "student-3",
+      "title": "보컬 8회",
+      "totalSessions": 8
+    }
+  ],
+  "Lesson": [
+    {
+      "id": "lesson-1",
+      "studentId": "student-1",
+      "passId": "pass-1",
+      "date": "2026-10-08",
+      "time": "15:00",
+      "teacher": "윤서연",
+      "status": "scheduled"
+    },
+    {
+      "id": "lesson-2",
+      "studentId": "student-2",
+      "passId": "pass-2",
+      "date": "2026-10-08",
+      "time": "16:00",
+      "teacher": "한도윤",
+      "status": "absent"
+    },
+    {
+      "id": "lesson-3",
+      "studentId": "student-3",
+      "passId": "pass-3",
+      "date": "2026-10-08",
+      "time": "17:30",
+      "teacher": "윤서연",
+      "status": "completed"
+    }
+  ],
+  "Consultation": [
+    {
+      "id": "consult-1",
+      "studentId": "student-1",
+      "date": "2026-10-07",
+      "memo": "발표회 곡은 작은 별 변주곡으로 정했어요. 집에서 하루 10분 연습하기."
+    }
+  ],
+  "Notice": [
+    {
+      "id": "notice-1",
+      "title": "가을 작은 음악회",
+      "date": "2026-10-08",
+      "content": "10월 마지막 토요일, 함께 연습한 곡을 나눠요. 편한 복장으로 참여해 주세요."
+    }
+  ]
+}

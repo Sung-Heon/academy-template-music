@@ -1,0 +1,265 @@
+{
+  "id": "music-academy",
+  "slug": "music",
+  "name": "소리숲 음악학원",
+  "englishName": "Music Studio",
+  "category": "arts",
+  "tagline": "매일의 작은 연습이, 무대 위 자신감으로.",
+  "description": "개인 레슨 · 회차권 · 결석과 보강을 연결하는 음악학원",
+  "accent": "#5b4b9a",
+  "tint": "#f2eff9",
+  "eyebrow": "LESSONS & LITTLE TRIUMPHS",
+  "primary": "Lesson",
+  "metrics": [
+    {
+      "entity": "Student",
+      "label": "함께하는 연주자"
+    },
+    {
+      "entity": "Lesson",
+      "label": "예정된 레슨",
+      "status": "scheduled"
+    },
+    {
+      "entity": "Lesson",
+      "label": "보강 대기",
+      "status": "absent"
+    },
+    {
+      "entity": "Pass",
+      "label": "운영 중 회차권"
+    }
+  ],
+  "entities": {
+    "Student": {
+      "label": "원생",
+      "description": "원생과 보호자의 연락처를 한곳에서 관리해요.",
+      "icon": "○",
+      "layout": "table",
+      "fields": [
+        {
+          "name": "name",
+          "label": "이름",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "phone",
+          "label": "연락처",
+          "type": "text",
+          "required": false
+        },
+        {
+          "name": "guardianName",
+          "label": "보호자",
+          "type": "text",
+          "required": false
+        },
+        {
+          "name": "guardianPhone",
+          "label": "보호자 연락처",
+          "type": "text",
+          "required": false
+        }
+      ],
+      "editFields": [
+        "name",
+        "phone",
+        "guardianName",
+        "guardianPhone"
+      ]
+    },
+    "Pass": {
+      "label": "회차권",
+      "description": "출석 완료된 레슨만 사용 횟수에 반영해요.",
+      "icon": "◈",
+      "layout": "cards",
+      "fields": [
+        {
+          "name": "studentId",
+          "label": "원생",
+          "type": "text",
+          "required": true,
+          "relation": "Student"
+        },
+        {
+          "name": "title",
+          "label": "수강권",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "totalSessions",
+          "label": "총 횟수",
+          "type": "number",
+          "required": true,
+          "min": 1,
+          "max": 200
+        }
+      ]
+    },
+    "Lesson": {
+      "label": "레슨 일정",
+      "description": "출석은 회차를 사용하고, 결석은 보강으로 이어져요.",
+      "icon": "♫",
+      "layout": "schedule",
+      "fields": [
+        {
+          "name": "studentId",
+          "label": "원생",
+          "type": "text",
+          "required": true,
+          "relation": "Student"
+        },
+        {
+          "name": "passId",
+          "label": "회차권",
+          "type": "text",
+          "required": true,
+          "relation": "Pass"
+        },
+        {
+          "name": "date",
+          "label": "레슨일",
+          "type": "date",
+          "required": true
+        },
+        {
+          "name": "time",
+          "label": "시간",
+          "type": "time",
+          "required": true
+        },
+        {
+          "name": "teacher",
+          "label": "담당 강사",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "status",
+          "label": "상태",
+          "type": "select",
+          "readOnly": true,
+          "options": [
+            {
+              "value": "scheduled",
+              "label": "예정"
+            },
+            {
+              "value": "completed",
+              "label": "출석 완료"
+            },
+            {
+              "value": "absent",
+              "label": "보강 대기"
+            }
+          ]
+        }
+      ],
+      "initialStatus": "scheduled",
+      "actions": [
+        {
+          "id": "complete",
+          "label": "출석 완료",
+          "from": [
+            "scheduled"
+          ],
+          "to": "completed"
+        },
+        {
+          "id": "absent",
+          "label": "결석",
+          "from": [
+            "scheduled"
+          ],
+          "to": "absent"
+        },
+        {
+          "id": "makeup",
+          "label": "보강 예약",
+          "from": [
+            "absent"
+          ],
+          "to": "scheduled",
+          "fields": [
+            {
+              "name": "date",
+              "label": "보강일",
+              "type": "date",
+              "required": true
+            },
+            {
+              "name": "time",
+              "label": "보강 시간",
+              "type": "time",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    "Consultation": {
+      "label": "상담 노트",
+      "description": "다음 상담에 이어갈 중요한 이야기를 남겨요.",
+      "icon": "↔",
+      "layout": "cards",
+      "fields": [
+        {
+          "name": "studentId",
+          "label": "원생",
+          "type": "text",
+          "required": true,
+          "relation": "Student"
+        },
+        {
+          "name": "date",
+          "label": "상담일",
+          "type": "date",
+          "required": true
+        },
+        {
+          "name": "memo",
+          "label": "상담 내용",
+          "type": "textarea",
+          "required": true
+        }
+      ],
+      "editFields": [
+        "date",
+        "memo"
+      ]
+    },
+    "Notice": {
+      "label": "발표회 · 공지",
+      "description": "학부모에게 전달할 내용을 정리해요. 실제 알림은 발송되지 않아요.",
+      "icon": "↗",
+      "layout": "cards",
+      "fields": [
+        {
+          "name": "title",
+          "label": "제목",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "date",
+          "label": "게시일",
+          "type": "date",
+          "required": true
+        },
+        {
+          "name": "content",
+          "label": "내용",
+          "type": "textarea",
+          "required": true
+        }
+      ],
+      "editFields": [
+        "title",
+        "date",
+        "content"
+      ]
+    }
+  }
+}

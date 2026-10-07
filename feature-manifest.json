@@ -1,0 +1,27 @@
+{
+  "features": [
+    "Student",
+    "Pass",
+    "Lesson",
+    "Consultation",
+    "Notice"
+  ],
+  "entities": [
+    "Student",
+    "Pass",
+    "Lesson",
+    "Consultation",
+    "Notice"
+  ],
+  "roles": [
+    "owner",
+    "staff"
+  ],
+  "workflows": [
+    "원생",
+    "회차권",
+    "레슨 일정",
+    "상담 노트",
+    "발표회 · 공지"
+  ]
+}
